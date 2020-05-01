@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  get '/users', to: 'users#new'
+  get '/', to: 'users#new', as: 'user'
   post '/', to: 'users#create'
   get "/welcome", to: "welcome#new"
 end
