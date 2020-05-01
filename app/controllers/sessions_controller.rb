@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
     @user = User.new 
   end 
   
-  def create 
-    @user = User.find_by(name: params[:user][:password])
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id 
-      redirect_to :welcome
+  def create
+    @user = User.find_by(name: params[:user][:name])
+    if @user == nil
+      redirect_to 'new'
     else
-      flash[:notice] = "Login is not correct"
-      redirect_to :login 
-    end 
+      return head(:forbidden) unless @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to homepage_path(@user)
+    end
   end
 end
