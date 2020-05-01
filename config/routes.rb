@@ -5,3 +5,4 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/welcome", to: "welcome#new"
 end
+
