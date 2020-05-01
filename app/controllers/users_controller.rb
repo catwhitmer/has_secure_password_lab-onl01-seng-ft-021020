@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to :welcome
     else
-      redirect_to :new
+      redirect_to 'users/new'
     end
   end
   
